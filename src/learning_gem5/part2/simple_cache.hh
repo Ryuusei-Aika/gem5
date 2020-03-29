@@ -79,7 +79,7 @@ class SimpleCache : public ClockedObject
 
         /**
          * Send a packet across this port. This is called by the owner and
-         * all of the flow control is hanled in this function.
+         * all of the flow control is handled in this function.
          * This is a convenience function for the SimpleCache to send pkts.
          *
          * @param packet to send.
@@ -130,7 +130,7 @@ class SimpleCache : public ClockedObject
         /**
          * Called by the master port if sendTimingResp was called on this
          * slave port (causing recvTimingResp to be called on the master
-         * port) and was unsuccesful.
+         * port) and was unsuccessful.
          */
         void recvRespRetry() override;
     };
@@ -174,7 +174,7 @@ class SimpleCache : public ClockedObject
         /**
          * Called by the slave port if sendTimingReq was called on this
          * master port (causing recvTimingReq to be called on the slave
-         * port) and was unsuccesful.
+         * port) and was unsuccessful.
          */
         void recvReqRetry() override;
 
@@ -200,7 +200,7 @@ class SimpleCache : public ClockedObject
     bool handleRequest(PacketPtr pkt, int port_id);
 
     /**
-     * Handle the respone from the memory side. Called from the memory port
+     * Handle the response from the memory side. Called from the memory port
      * on a timing response.
      *
      * @param responding packet
@@ -243,7 +243,7 @@ class SimpleCache : public ClockedObject
 
     /**
      * Insert a block into the cache. If there is no room left in the cache,
-     * then this function evicts a random entry t make room for the new block.
+     * then this function evicts a random entry to make room for the new block.
      *
      * @param packet with the data (and address) to insert into the cache
      */
