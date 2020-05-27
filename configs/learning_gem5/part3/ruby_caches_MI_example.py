@@ -218,7 +218,7 @@ class MyNetwork(SimpleNetwork):
         self.ruby_system = ruby_system
 
     def connectControllers(self, controllers):
-        """Connect all of the controllers to routers and connec the routers
+        """Connect all of the controllers to routers and connect the routers
            together in a point-to-point network.
         """
         # Create one router/switch per controller in the system

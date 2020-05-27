@@ -284,7 +284,7 @@ machine(MachineType:Directory, "Directory protocol")
             // Special function from AbstractController that will send a new
             // packet out of the "Ruby" black box to the memory side. At some
             // point the response will be on the memory queue.
-            // Like enqeue, this takes a latency for the request.
+            // Like enqueue, this takes a latency for the request.
             queueMemoryRead(in_msg.Requestor, address, toMemLatency);
         }
     }

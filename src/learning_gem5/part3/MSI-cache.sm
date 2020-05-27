@@ -298,7 +298,7 @@ machine(MachineType:L1Cache, "MSI cache")
     /*************************************************************************/
     // Input/output network definitions
 
-    // Output ports. This defines the message types that will flow ocross the
+    // Output ports. This defines the message types that will flow cross the
     // output buffers as defined above. These must be "to" networks.
     // "request_out" is the name we'll use later to send requests.
     // "RequestMsg" is the message type we will send (see MSI-msg.sm)
@@ -471,20 +471,21 @@ machine(MachineType:L1Cache, "MSI cache")
         // The syntax for enqueue is a lot like peek. Instead of populating
         // in_msg, enqueue has an out_msg reference. Whatever you set on out_msg
         // is sent through the out port specified.  "request_out" is the port
-        // we're sending the message out of "RequestMsg" is the type of message
-        // we're sending "1" is the latency (in cycles) the port waits before
+        // we're sending the message out of, "RequestMsg" is the type of message
+        // we're sending, "1" is the latency (in cycles) the port waits before
         // sending the message.
         enqueue(request_out, RequestMsg, 1) {
             out_msg.addr := address;
             // This type is defined in MSI-msg.sm for this protocol.
             out_msg.Type := CoherenceRequestType:GetS;
+
             // The destination may change depending on the address striping
             // across different directories, so query the network.
             out_msg.Destination.add(mapAddressToMachine(address,
                                     MachineType:Directory));
             // See mem/ruby/protocol/RubySlicc_Exports.sm for possible sizes.
             out_msg.MessageSize := MessageSizeType:Control;
-            // Set that the reqeustor is this machine so we get the response.
+            // Set that the requestor is this machine so we get the response.
             out_msg.Requestor := machineID;
         }
     }
@@ -695,7 +696,7 @@ machine(MachineType:L1Cache, "MSI cache")
     // table from Sorin et al. These are mostly in upper-left to bottom-right
     // order
 
-    // Each transtiion has (up to) 3 parameters, the current state, the
+    // Each transition has (up to) 3 parameters, the current state, the
     // triggering event and the final state. Thus, the below transition reads
     // "Move from state I on a Load event to state IS_D". Below are other
     // examples of transition statements.
